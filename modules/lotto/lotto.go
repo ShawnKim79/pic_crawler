@@ -26,5 +26,18 @@ func LotsNumber(LimitValue int) (r int) {
 
 	r = RandomObj.Intn(LimitValue + 100000) // 랜덤한 숫자 생성
 	r = (r % 45) + 1
+
 	return
+}
+
+func WriteLottoSet(index int, value int) {
+	RandomSeed := rand.NewSource(time.Now().UnixNano())
+	RandomObj := rand.New(RandomSeed)
+	SleepCount := RandomObj.Intn(2) + 1
+	fmt.Printf("number generation start. Wait %d second\n", SleepCount)
+	time.Sleep(time.Duration(SleepCount) * time.Second)
+
+	lotto_set[index] = LotsNumber(value)
+
+	PrintLottoSet()
 }
